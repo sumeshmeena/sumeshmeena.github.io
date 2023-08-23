@@ -45,19 +45,32 @@
   <div class="header">
     <h1>Sumesh Meena</h1>
   </div>
-  <div class="collage">
-    <?php
-    $imageDir = 'images/';
-    $images = scandir($imageDir);
-    
-    foreach ($images as $image) {
-      if ($image !== '.' && $image !== '..') {
-        echo '<div class="image">';
-        echo '<img src="' . $imageDir . $image . '" alt="Artwork">';
-        echo '</div>';
-      }
-    }
-    ?>
-  </div>
+  <div class="collage" id="imageCollage"></div>
+  
+  <script>
+    const imageCollage = document.getElementById('imageCollage');
+
+    // Retrieve the list of image URLs using GitHub API
+    fetch('https://github.com/sumeshmeena/sumeshmeena.github.io/tree/ea6491a13d95866977a5f77a44c8f6ff417173ed/images')
+      .then(response => response.json())
+      .then(images => {
+        images.forEach(image => {
+          if (image.type === 'file') {
+            const imageContainer = document.createElement('div');
+            imageContainer.className = 'image';
+
+            const imageElement = document.createElement('img');
+            imageElement.src = image.download_url;
+            imageElement.alt = 'Artwork';
+
+            imageContainer.appendChild(imageElement);
+            imageCollage.appendChild(imageContainer);
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching images:', error);
+      });
+  </script>
 </body>
 </html>
