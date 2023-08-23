@@ -51,7 +51,7 @@
     const imageCollage = document.getElementById('imageCollage');
 
     // Retrieve the list of image URLs using GitHub API
-    fetch('https://github.com/sumeshmeena/sumeshmeena.github.io/tree/ea6491a13d95866977a5f77a44c8f6ff417173ed/images')
+    fetch('https://api.github.com/repos/sumeshmeena/sumeshmeena.github.io/contents/images')
       .then(response => response.json())
       .then(images => {
         images.forEach(image => {
