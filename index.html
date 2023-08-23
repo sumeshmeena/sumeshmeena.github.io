@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +25,11 @@
     font-size: 36px;
     margin: 0;
   }
+  .skills {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px 0;
+  }
   .collage {
     display: flex;
     flex-wrap: wrap;
@@ -30,7 +38,7 @@
     padding: 20px;
   }
   .image {
-    max-width: 100%;
+    max-width: 50%;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -39,38 +47,32 @@
     width: 100%;
     height: auto;
   }
+  .caption {
+    margin-top: 10px;
+    font-size: 16px;
+    text-align: center;
+  }
 </style>
 </head>
 <body>
   <div class="header">
     <h1>Sumesh Meena</h1>
   </div>
-  <div class="collage" id="imageCollage"></div>
-  
-  <script>
-    const imageCollage = document.getElementById('imageCollage');
-
-    // Retrieve the list of image URLs using GitHub API
-    fetch('https://api.github.com/repos/sumeshmeena/sumeshmeena.github.io/contents/images')
-      .then(response => response.json())
-      .then(images => {
-        images.forEach(image => {
-          if (image.type === 'file') {
-            const imageContainer = document.createElement('div');
-            imageContainer.className = 'image';
-
-            const imageElement = document.createElement('img');
-            imageElement.src = image.download_url;
-            imageElement.alt = 'Artwork';
-
-            imageContainer.appendChild(imageElement);
-            imageCollage.appendChild(imageContainer);
-          }
-        });
-      })
-      .catch(error => {
-        console.error('Error fetching images:', error);
-      });
-  </script>
+  <div class="skills">Drawing and Illustrations</div>
+  <div class="collage">
+    <div class="image">
+      <img src="images/ezaf.png" alt="T-Shirt Design">
+      <div class="caption">T-Shirt Design</div>
+    </div>
+    <div class="image">
+      <img src="images/iicm.png" alt="Hoodie Design">
+      <div class="caption">Hoodie Design</div>
+    </div>
+    <div class="image">
+      <img src="images/Rough Portfolio-2 - Copy.png" alt="Magazine Cover Design">
+      <div class="caption">Magazine Cover Design</div>
+    </div>
+    <!-- Add more image elements as needed -->
+  </div>
 </body>
 </html>
